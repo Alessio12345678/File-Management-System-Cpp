@@ -11,13 +11,6 @@ bool dirExist(const std::string& dirpath);
 std::string readFile(const std::string& filepath);
 void appFile(const std::string& filepath, const std::string& text);
 
-int main() {
-    crtFile(".\\hello.txt");
-    crtFile(".\\hello.txt");
-
-    return 0;
-}
-
 const char* format(const std::string& variable) {
     const char* cStr = variable.c_str();
     return cStr;
