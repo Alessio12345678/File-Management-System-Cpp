@@ -22,7 +22,7 @@ fileExist(const std::string& filepath);
 // Check Directory at path and returns true/false
 dirExist(const std::string& dirpath);
 
-// Read File at path and returns file-content/nothing
+// Read File at path and returns file-content/empty-string
 readFile(const std::string& filepath);
 
 // Append to File at path
