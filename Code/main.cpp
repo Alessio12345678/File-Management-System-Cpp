@@ -1,8 +1,6 @@
 #include <fstream>
 #include <iostream>
 #include <sys/stat.h>
-#include <unistd.h>
-#include <direct.h>
 
 void crtFile(const std::string& filepath);
 void delFile(const std::string& filepath);
@@ -16,6 +14,8 @@ void appFile(const std::string& filepath, const std::string& text);
 int main() {
     crtFile(".\\hello.txt");
     crtFile(".\\hello.txt");
+
+    return 0;
 }
 
 const char* format(const std::string& variable) {
@@ -24,13 +24,17 @@ const char* format(const std::string& variable) {
 }
 
 void crtFile(const std::string& filePath) {
-    std::ofstream newFile(filePath);
+    if (fileExist(filePath)) {
+        std::ofstream newFile(filePath);
 
-    if (newFile.is_open()) {
-        std::cout << "File: " + filePath + " created..." << "\n";
-        newFile.close();
+        if (newFile.is_open()) {
+            std::cout << "File: " + filePath + " created..." << "\n";
+            newFile.close();
+        } else {
+            std::cerr << "\033[1;31m" << "crtFil-Error :  " << strerror(errno) << "\033[0m" << "\n";
+        }
     } else {
-        std::cerr << "\033[1;31m" << "crtFil-Error :  " << strerror(errno) << "\033[0m" << "\n";
+        std::cerr << "\033[1;31m" << "appFil-Error :  File doesn't exist!" << "\033[0m" << "\n";
     }
 }
 
@@ -82,10 +86,11 @@ std::string readFile(const std::string& filepath) {
     if (fileExist(filepath)) {
         std::ifstream file(filepath);
         while (getline(file, holder)) { content.append(holder); }
-        return content;
         file.close();
+        return content;
     } else {
         std::cerr << "\033[1;31m" << "readFil-Error :  File doesn't exist!" << "\033[0m" << "\n";
+        return "";
     }
 }
 
