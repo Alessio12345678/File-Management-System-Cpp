@@ -28,3 +28,6 @@ readFile(const std::string& filepath);
 // Append to File at path
 appFile(const std::string& filepath, const std::string& text);
 ```
+
+#### Credit
+[@amsyarasyiq](https://github.com/amsyarasyiq)
