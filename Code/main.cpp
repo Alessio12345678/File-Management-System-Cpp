@@ -17,7 +17,7 @@ const char* format(const std::string& variable) {
 }
 
 void crtFile(const std::string& filePath) {
-    if (fileExist(filePath)) {
+    if (fileExist(filePath) == false) {
         std::ofstream newFile(filePath);
 
         if (newFile.is_open()) {
@@ -27,7 +27,7 @@ void crtFile(const std::string& filePath) {
             std::cerr << "\033[1;31m" << "crtFil-Error :  " << strerror(errno) << "\033[0m" << "\n";
         }
     } else {
-        std::cerr << "\033[1;31m" << "appFil-Error :  File doesn't exist!" << "\033[0m" << "\n";
+        std::cerr << "\033[1;31m" << "crtFile-Error :  File already exist!" << "\033[0m" << "\n";
     }
 }
 
