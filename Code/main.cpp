@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include <sys/stat.h>
+#include <array>
 
 void crtFile(const std::string& filepath);
 void delFile(const std::string& filepath);
