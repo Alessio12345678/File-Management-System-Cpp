@@ -116,7 +116,7 @@ std::string readFile(const std::string& filepath) {
         file.close();
         return content;
     } else {
-        std::cerr << "\033[1;31m" << "readFil-Error :  File doesn't exist!" << "\033[0m" << "\n";
+        std::cerr << "\033[1;31m" << "readFile-Error :  File doesn't exist!" << "\033[0m" << "\n";
         return "";
     }
 }
@@ -127,6 +127,6 @@ void appFile(const std::string& filepath, const std::string& text) {
         file << text;
         file.close();
     } else {
-        std::cerr << "\033[1;31m" << "appFil-Error :  File doesn't exist!" << "\033[0m" << "\n";
+        std::cerr << "\033[1;31m" << "appFile-Error :  File doesn't exist!" << "\033[0m" << "\n";
     }
 }
