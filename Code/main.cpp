@@ -3,6 +3,9 @@
 #include <sys/stat.h>
 #include <array>
 
+// Testing purposes
+#include <exception>
+
 void crtFile(const std::string& filepath);
 void delFile(const std::string& filepath);
 void crtDir(const std::string& dirpath);
@@ -11,6 +14,36 @@ bool fileExist(const std::string& filepath);
 bool dirExist(const std::string& dirpath);
 std::string readFile(const std::string& filepath);
 void appFile(const std::string& filepath, const std::string& text);
+
+int main() {
+    // ! You don't have to define exceptions! The functions handle it all!
+    // * Testing all functions
+    crtDir(".\\myDir");
+    crtDir(".\\myDir\\newDir");
+
+    // ! Doesn't work because 'heyDir' doesn't exist.
+    crtDir(".\\heyDir\\myNewDir");
+
+    crtFile(".\\newfile.txt");
+    crtFile(".\\myFile");
+
+    crtFile(".\\myDir\\newfile.txt");
+
+    std::cout << dirExist(".\\myDir\\newDir");
+    std::cout << dirExist(".\\heyDir\\myNewDir");
+
+    std::cout << fileExist(".\\newFile.txt");
+    std::cout << fileExist(".\\myFile");
+
+    appFile(".\\newFile.txt", "Kon'nichiwa mina-san. Hajimemashite. Watashi wa yashinobu desu. Yoroshiku onegaishimasu.");
+    readFile(".\\newFile.txt");
+
+    delFile(".\\newFile.txt");
+    delFile(".\\myfile");
+    delFile(".\\myDir\\newFile.txt");
+    delDir(".\\myDir\\newDir");
+    delDir(".\\myDir");
+}
 
 const char* format(const std::string& variable) {
     const char* cStr = variable.c_str();
